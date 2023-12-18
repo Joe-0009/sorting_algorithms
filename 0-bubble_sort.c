@@ -23,12 +23,13 @@ void swap_int(int *a, int *b)
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i = 0, k;
+	size_t i, k;
 	int temp;
 
 	if (!array || !size)
 		return;
 
+	i = 0;
 	while (i < size)
 	{
 		for (k = 0, k < size - 1, k++)
