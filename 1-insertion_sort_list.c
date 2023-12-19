@@ -43,8 +43,12 @@ void insertion_sort_list(listint_t **list)
 			if (j->prev->n > j->n)
 			{
 				swap_node(j->prev, j);
+				if (!j->prev)
+					*list = j;
 				print_list((const listint_t *)*list);
 			}
+			else
+				j = j->prev;
 		}
 	}
 }
