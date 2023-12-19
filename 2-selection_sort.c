@@ -14,23 +14,25 @@
 void selection_sort(int *array, size_t size)
 {
 	size_t i, j;
-	int min;
- 
+	int *min;
+
 	if (!array || size < 2)
 		return;
 
 	for (i = 0; i < size - 1; i++)
 	{
-		min = array[i];
+		min = array + i;
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] < min)
-				min = array[j];
+			if (array[j] < *min)
+				min = array + j;
+			else
+				min = min;
 
 		}
 		if ((array[i]) != min)
 		{
-			swap_int(array[i], array[j]);
+			swap_int(array + i, min);
 			print_array(array, size);
 		}
 	}
