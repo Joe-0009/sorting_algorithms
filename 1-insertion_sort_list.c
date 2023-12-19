@@ -1,21 +1,5 @@
 #include "sort.h"
 
-/**
- * swap_node - Swap two nodes in a listint_t doubly-linked list.
- * @a: A pointer to the first node to swap.
- * @b: The second node to swap.
- */
-void swap_node(listint_t *a, listint_t *b)
-{
-	if (a->prev)
-		a->prev->next = b;
-	if (b->next)
-		b->next->prev = a;
-	a->next = b->next;
-	b->prev = a->prev;
-	a->prev = b;
-	b->next = a;
-}
 
 
 /**
@@ -27,28 +11,30 @@ void swap_node(listint_t *a, listint_t *b)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *i, *j;
+	int key;
+	listint_t *temp, *current;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
-	i = (*list)->next;
+	current = (*list)->next;
 
-	while (i)
+	while (current)
 	{
-		j = i;
-		i = i->next;
-		while (j && j->prev)
+		temp = current->prev;
+		key = temp->prev;
+		while (temp && temp->n > key)
 		{
-			if (j->prev->n > j->n)
-			{
-				swap_node(j->prev, j);
-				if (!j->prev)
-					*list = j;
-				print_list((const listint_t *)*list);
-			}
-			else
-				j = j->prev;
+			temp->next->n = temp->n;
+			temp = temp->prev;
+			print_list((const listint_t *)*list);
 		}
+
+		if (temp == NULL)
+			(*list)->n = key;
+		else
+			temp->next->n = key;
+
+		current = current->next;
 	}
 }
