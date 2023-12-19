@@ -1,11 +1,11 @@
 #include "sort.h"
 
 /**
- * swap_ints - Swap two integers in an array.
+ * swap_int - Swap two integers in an array.
  * @a: The first integer to swap.
  * @b: The second integer to swap.
  */
-void swap_ints(int *a, int *b)
+void swap_int(int *a, int *b)
 {
 	int tmp;
 
@@ -35,11 +35,12 @@ void selection_sort(int *array, size_t size)
 	{
 		min = array + i;
 		for (j = i + 1; j < size; j++)
-			min = (array[j] < *min) ? (array + j) : min;
+			if (array[j] < *min)
+				min = (array + j);
 
 		if ((array + i) != min)
 		{
-			swap_ints(array + i, min);
+			swap_int(array + i, min);
 			print_array(array, size);
 		}
 	}
