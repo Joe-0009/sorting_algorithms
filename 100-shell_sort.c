@@ -4,7 +4,7 @@
  * get_max_gap - gets the largest knuth sequence gap for the size
  * @size: the size of the array
  *
- * return: the gap size
+ * Return: the gap size
  */
 
 size_t get_max_gap(size_t size)
