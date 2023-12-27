@@ -34,7 +34,7 @@ void merge_compare(int *array, size_t start, size_t stop, int *new)
 		}
 	}
 	printf("[Done]: ");
-	pritn_array(new + start, stop - start);
+	print_array(new + start, stop - start);
 
 }
 
